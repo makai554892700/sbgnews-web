@@ -1,33 +1,33 @@
 <template>
   <ul class="index-table">
-    <li v-for="item in items">
+    <li v-for="item in data">
       <div class="index">
         <img src="../../static/img/head.png" class="head">
         <div class="name">
           <p class="color-3123DF">
-            {{item.name}}
+            {{item.userDesc.nikeName}}
             <br>
-            <small class="color-868780">{{item.time}}</small>
+            <small class="color-868780">{{item.newsDesc.createTime}}</small>
           </p>
         </div>
-        <div class="content">{{item.content}}</div>
+        <div class="content">{{item.text}}</div>
         <table class="table">
           <tr>
             <td>
               <img src="../../static/img/good.png">
-              <span class="num">{{item.good}}</span>
+              <span class="num">{{item.newsDesc.love}}</span>
             </td>
             <td>
               <img src="../../static/img/hate.png">
-              <span class="num">{{item.hate}}</span>
+              <span class="num">{{item.newsDesc.hate}}</span>
             </td>
             <td>
               <img src="../../static/img/share.png">
-              <span class="num">{{item.share}}</span>
+              <span class="num">{{item.newsDesc.share}}</span>
             </td>
             <td>
               <img src="../../static/img/comment.png">
-              <span class="num">{{item.comment}}</span>
+              <span class="num">{{item.newsDesc.comment}}</span>
             </td>
           </tr>
         </table>
@@ -37,36 +37,39 @@
 </template>
 <script>
   export default {
-//    created () {
-//      this.$http.get('/static/testdata.json', function (data) {
-//        alert('succeed data=' + data)
-//      }).error(function (data) {
-//        alert('error data=' + data)
-//      })
-//    },
+    name: 'index',
     data () {
       return {
-        'items': [
-          {
-            'name': 'name1',
-            'time': 'time1',
-            'content': 'content1',
-            'good': 'good1',
-            'hate': 'hate1',
-            'share': 'share1',
-            'comment': 'comment1'
-          },
-          {
-            'name': 'name2',
-            'time': 'time2',
-            'content': 'content2',
-            'good': 'good2',
-            'hate': 'hate2',
-            'share': 'share2',
-            'comment': 'comment2'
-          }
-        ]
+        'data': []
       }
+    },
+    methods: {},
+    created () {
+//      this.$http.jsonp('http://api.markingyun.cn/sbgnews/jokes/getJokes', {
+//        params: {
+//          page: 10,
+//          count: 10
+//        },
+//        jsonp: 'cb'
+//      }).then((data) => {
+//        this.data.data = data.data
+//      }, (response) => {
+//        alert('error=' + response)
+//      })
+//      this.$http.post('http://api.markingyun.cn/sbgnews/jokes/getJokes', {
+//        page: 10,
+//        count: 10
+//      }, {emulateJSON: true}).then((data) => {
+//        this.data.data = data.data.data
+//        console.info(this.data.data)
+//      }, (response) => {
+//        alert('error=' + response)
+//      })
+      this.$http.get('/static/testdata.json').then((data) => {
+        this.data = data.data.data
+      }, (response) => {
+        alert('error=' + response)
+      })
     }
   }
 </script>
