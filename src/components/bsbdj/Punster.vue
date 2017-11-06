@@ -1,33 +1,33 @@
 <template>
-  <ul class="index-table">
-    <li v-for="item in data">
-      <div class="index">
-        <img src="../../static/img/head.png" class="head">
+  <ul class="punster-table">
+    <li v-for="punster in data">
+      <div class="punster">
+        <img src="../../../static/img/user.png" class="head">
         <div class="name">
           <p class="color-3123DF">
-            {{item.userDesc.nikeName}}
+            {{punster.userDesc.nikeName}}
             <br>
-            <small class="color-868780">{{item.newsDesc.createTime}}</small>
+            <small class="color-868780">{{punster.newsDesc.createTime}}</small>
           </p>
         </div>
-        <div class="content">{{item.text}}</div>
+        <div class="content">{{punster.text}}</div>
         <table class="table">
           <tr>
             <td>
-              <img src="../../static/img/good.png">
-              <span class="num">{{item.newsDesc.love}}</span>
+              <img src="../../../static/img/love.png">
+              <span class="num">{{punster.newsDesc.love}}</span>
             </td>
             <td>
-              <img src="../../static/img/hate.png">
-              <span class="num">{{item.newsDesc.hate}}</span>
+              <img src="../../../static/img/hate.png">
+              <span class="num">{{punster.newsDesc.hate}}</span>
             </td>
             <td>
-              <img src="../../static/img/share.png">
-              <span class="num">{{item.newsDesc.share}}</span>
+              <img src="../../../static/img/share.png">
+              <span class="num">{{punster.newsDesc.share}}</span>
             </td>
             <td>
-              <img src="../../static/img/comment.png">
-              <span class="num">{{item.newsDesc.comment}}</span>
+              <img src="../../../static/img/comment.png">
+              <span class="num">{{punster.newsDesc.comment}}</span>
             </td>
           </tr>
         </table>
@@ -37,7 +37,7 @@
 </template>
 <script>
   export default {
-    name: 'index',
+    name: 'punster',
     data () {
       return {
         'data': []
@@ -45,18 +45,7 @@
     },
     methods: {},
     created () {
-//      this.$http.jsonp('http://api.markingyun.cn/sbgnews/jokes/getJokes', {
-//        params: {
-//          page: 10,
-//          count: 10
-//        },
-//        jsonp: 'cb'
-//      }).then((data) => {
-//        this.data.data = data.data
-//      }, (response) => {
-//        alert('error=' + response)
-//      })
-//      this.$http.post('http://api.markingyun.cn/sbgnews/jokes/getJokes', {
+//      this.$http.post('http://api.markingyun.cn/sbgnews/punsters/getPunsters', {
 //        page: 10,
 //        count: 10
 //      }, {emulateJSON: true}).then((data) => {
@@ -65,7 +54,7 @@
 //      }, (response) => {
 //        alert('error=' + response)
 //      })
-      this.$http.get('/static/testdata.json').then((data) => {
+      this.$http.get('/static/test/getPunsters.json').then((data) => {
         this.data = data.data.data
       }, (response) => {
         alert('error=' + response)
@@ -77,11 +66,11 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .index-table {
+  .punster-table {
     list-style: none;
   }
 
-  .index {
+  .punster {
     border-bottom: 1px solid #CDC8B3;
   }
 
