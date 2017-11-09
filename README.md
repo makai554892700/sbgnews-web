@@ -42,3 +42,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
     * npm install
 * 启动项目
     * npm run dev
+
+### 坑锦集
+* this.$router.push({name: '/mine', params: {username: res.data.data.userName}})//push时如果使用path则params无效

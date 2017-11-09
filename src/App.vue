@@ -17,10 +17,10 @@
         <img src="/static/img/community.png" data-imgname="my"/>
         <div class="menu_name">社区</div>
       </div>
-      <div id="five" class="subMenu text-center">
+      <a href="/mine.html" id="five" class="subMenu text-center">
         <img src="/static/img/mine.png" data-imgname="my"/>
         <div class="menu_name">我的</div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
