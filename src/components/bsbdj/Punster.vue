@@ -2,10 +2,10 @@
   <ul class="punster-table">
     <li v-for="punster in data">
       <div class="punster">
-        <img src="../../../static/img/user.png" class="head">
+        <img :src="punster.userDesc.imgUrl" class="head">
         <div class="name">
           <p class="color-3123DF">
-            {{punster.userDesc.nikeName}}
+            {{punster.userDesc.nickName}}
             <br>
             <small class="color-868780">{{punster.newsDesc.createTime}}</small>
           </p>
@@ -14,19 +14,19 @@
         <table class="table">
           <tr>
             <td>
-              <img src="../../../static/img/love.png">
+              <img src="/static/img/love.png">
               <span class="num">{{punster.newsDesc.love}}</span>
             </td>
             <td>
-              <img src="../../../static/img/hate.png">
+              <img src="/static/img/hate.png">
               <span class="num">{{punster.newsDesc.hate}}</span>
             </td>
             <td>
-              <img src="../../../static/img/share.png">
+              <img src="/static/img/share.png">
               <span class="num">{{punster.newsDesc.share}}</span>
             </td>
             <td>
-              <img src="../../../static/img/comment.png">
+              <img src="/static/img/comment.png">
               <span class="num">{{punster.newsDesc.comment}}</span>
             </td>
           </tr>
@@ -45,16 +45,11 @@
     },
     methods: {},
     created () {
-//      this.$http.post('http://api.markingyun.cn/sbgnews/punsters/getPunsters', {
-//        page: 10,
-//        count: 10
-//      }, {emulateJSON: true}).then((data) => {
-//        this.data.data = data.data.data
-//        console.info(this.data.data)
-//      }, (response) => {
-//        alert('error=' + response)
-//      })
-      this.$http.get('/static/test/getPunsters.json').then((data) => {
+      this.$http.post('/sbgnews/api/bsbdj/getPunsters', {
+        page: 0,
+        count: 10,
+        needRealText: true
+      }, {emulateJSON: true}).then((data) => {
         this.data = data.data.data
       }, (response) => {
         alert('error=' + response)

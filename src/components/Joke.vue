@@ -2,10 +2,10 @@
   <ul class="joke-table">
     <li v-for="joke in data">
       <div class="joke">
-        <img src="../../static/img/user.png" class="head">
+        <img :src="joke.userDesc.imgUrl" class="head">
         <div class="name">
           <p class="color-3123DF">
-            {{joke.userDesc.nikeName}}
+            {{joke.userDesc.nickName}}
             <br>
             <small class="color-868780">{{joke.newsDesc.createTime}}</small>
           </p>
@@ -14,19 +14,19 @@
         <table class="table">
           <tr>
             <td>
-              <img src="../../static/img/love.png">
+              <img src="/static/img/love.png">
               <span class="num">{{joke.newsDesc.love}}</span>
             </td>
             <td>
-              <img src="../../static/img/hate.png">
+              <img src="/static/img/hate.png">
               <span class="num">{{joke.newsDesc.hate}}</span>
             </td>
             <td>
-              <img src="../../static/img/share.png">
+              <img src="/static/img/share.png">
               <span class="num">{{joke.newsDesc.share}}</span>
             </td>
             <td>
-              <img src="../../static/img/comment.png">
+              <img src="/static/img/comment.png">
               <span class="num">{{joke.newsDesc.comment}}</span>
             </td>
           </tr>
@@ -45,17 +45,13 @@
     },
     methods: {},
     created () {
-//      this.$http.post('http://api.markingyun.cn/sbgnews/jokes/getJokes', {
-//        page: 10,
-//        count: 10
-//      }, {emulateJSON: true}).then((data) => {
-//        this.data.data = data.data.data
-//        console.info(this.data.data)
-//      }, (response) => {
-//        alert('error=' + response)
-//      })
-      this.$http.get('/static/test/getJokes.json').then((data) => {
+      this.$http.post('/sbgnews/api/jokes/getJokes', {
+        page: 0,
+        count: 10,
+        needRealText: true
+      }, {emulateJSON: true}).then((data) => {
         this.data = data.data.data
+        console.info(this.data)
       }, (response) => {
         alert('error=' + response)
       })

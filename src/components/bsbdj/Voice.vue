@@ -2,10 +2,10 @@
   <ul class="voice-table">
     <li v-for="voice in data">
       <div class="voice">
-        <img src="../../../static/img/user.png" class="head">
+        <img :src="voice.userDesc.imgUrl" class="head">
         <div class="name">
           <p class="color-3123DF">
-            {{voice.userDesc.nikeName}}
+            {{voice.userDesc.nickName}}
             <br>
             <small class="color-868780">{{voice.newsDesc.createTime}}</small>
           </p>
@@ -14,19 +14,19 @@
         <table class="table">
           <tr>
             <td>
-              <img src="../../../static/img/love.png">
+              <img src="/static/img/love.png">
               <span class="num">{{voice.newsDesc.love}}</span>
             </td>
             <td>
-              <img src="../../../static/img/hate.png">
+              <img src="/static/img/hate.png">
               <span class="num">{{voice.newsDesc.hate}}</span>
             </td>
             <td>
-              <img src="../../../static/img/share.png">
+              <img src="/static/img/share.png">
               <span class="num">{{voice.newsDesc.share}}</span>
             </td>
             <td>
-              <img src="../../../static/img/comment.png">
+              <img src="/static/img/comment.png">
               <span class="num">{{voice.newsDesc.comment}}</span>
             </td>
           </tr>
@@ -45,17 +45,13 @@
     },
     methods: {},
     created () {
-//      this.$http.post('http://api.markingyun.cn/sbgnews/voices/getvoices', {
-//        page: 10,
-//        count: 10
-//      }, {emulateJSON: true}).then((data) => {
-//        this.data.data = data.data.data
-//        console.info(this.data.data)
-//      }, (response) => {
-//        alert('error=' + response)
-//      })
-      this.$http.get('/static/test/getVoices.json').then((data) => {
+      this.$http.post('/sbgnews/api/bsbdj/getVoices', {
+        page: 0,
+        count: 10,
+        needRealText: true
+      }, {emulateJSON: true}).then((data) => {
         this.data = data.data.data
+        console.info(this.data)
       }, (response) => {
         alert('error=' + response)
       })

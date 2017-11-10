@@ -48,7 +48,7 @@
               'usr': this.loginForm.userName,
               'pwd': this.loginForm.pwd
             }
-            this.$http.get('/static/test/login.json', data)
+            this.$http.get('/sbgnews/api/user/login', data)
               .then(res => {
                 if (res.data.code === 0) {
                   sessionStorage.setItem('accessToken', res.data.data.accessToken)
