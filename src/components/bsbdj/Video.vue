@@ -36,24 +36,18 @@
   </ul>
 </template>
 <script>
+  import {getVideos} from '../../common/methods'
+
   export default {
     name: 'video',
-    data () {
+    data: function () {
       return {
         'data': []
       }
     },
     methods: {},
-    created () {
-      this.$http.post('/sbgnews/api/bsbdj/getVideos', {
-        page: 0,
-        count: 10,
-        needRealText: true
-      }, {emulateJSON: true}).then((data) => {
-        this.data = data.data.data
-      }, (response) => {
-        alert('error=' + response)
-      })
+    created: function () {
+      getVideos(this, {page: 0, count: 10, needRealText: true})
     }
   }
 </script>

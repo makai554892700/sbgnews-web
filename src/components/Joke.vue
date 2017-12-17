@@ -14,19 +14,23 @@
         <table class="table">
           <tr>
             <td>
-              <img src="/static/img/love.png">
+              <img src="/static/img/love.png"
+                   v-on:click="love({'newsMark':joke.newsDesc.newsMark,'newsType':joke.newsDesc.newsType})">
               <span class="num">{{joke.newsDesc.love}}</span>
             </td>
             <td>
-              <img src="/static/img/hate.png">
+              <img src="/static/img/hate.png"
+                   v-on:click="hate({'newsMark':joke.newsDesc.newsMark,'newsType':joke.newsDesc.newsType})">
               <span class="num">{{joke.newsDesc.hate}}</span>
             </td>
             <td>
-              <img src="/static/img/share.png">
+              <img src="/static/img/share.png"
+                   v-on:click="share({'newsMark':joke.newsDesc.newsMark,'newsType':joke.newsDesc.newsType})">
               <span class="num">{{joke.newsDesc.share}}</span>
             </td>
             <td>
-              <img src="/static/img/comment.png">
+              <img src="/static/img/comment.png"
+                   v-on:click="comment({'newsMark':joke.newsDesc.newsMark,'newsType':joke.newsDesc.newsType})">
               <span class="num">{{joke.newsDesc.comment}}</span>
             </td>
           </tr>
@@ -36,25 +40,31 @@
   </ul>
 </template>
 <script>
+  import {getJocks, Love, Hate, Share, Comment} from '../common/methods'
+
   export default {
     name: 'joke',
-    data () {
+    data: function () {
       return {
         'data': []
       }
     },
-    methods: {},
-    created () {
-      this.$http.post('/sbgnews/api/jokes/getJokes', {
-        page: 0,
-        count: 10,
-        needRealText: true
-      }, {emulateJSON: true}).then((data) => {
-        this.data = data.data.data
-        console.info(this.data)
-      }, (response) => {
-        alert('error=' + response)
-      })
+    methods: {
+      love: function (data) {
+        Love(this, data)
+      },
+      hate: function (data) {
+        Hate(this, data)
+      },
+      share: function (data) {
+        Share(this, data)
+      },
+      comment: function (data) {
+        Comment(this, data)
+      }
+    },
+    created: function () {
+      getJocks(this, {page: 0, count: 10, needRealText: true})
     }
   }
 </script>

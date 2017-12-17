@@ -36,25 +36,18 @@
   </ul>
 </template>
 <script>
+  import {getVoices} from '../../common/methods'
+
   export default {
     name: 'voice',
-    data () {
+    data: function () {
       return {
         'data': []
       }
     },
     methods: {},
-    created () {
-      this.$http.post('/sbgnews/api/bsbdj/getVoices', {
-        page: 0,
-        count: 10,
-        needRealText: true
-      }, {emulateJSON: true}).then((data) => {
-        this.data = data.data.data
-        console.info(this.data)
-      }, (response) => {
-        alert('error=' + response)
-      })
+    created: function () {
+      getVoices(this, {page: 0, count: 10, needRealText: true})
     }
   }
 </script>

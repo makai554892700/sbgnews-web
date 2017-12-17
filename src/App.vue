@@ -13,9 +13,9 @@
     <div class="footer">
       <div class="g-wrap cfix">
         <a v-on:click="redirectTo('/')" class="item hover"><em class="bgicon"></em>精华</a>
-        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em>新帖</a>
-        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em></a>
-        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em>社区</a>
+        <a v-on:click="redirectTo('/new_post')" class="item"><em class="bgicon"></em>新帖</a>
+        <a v-on:click="redirectTo('/new')" class="item"><em class="bgicon"></em></a>
+        <a v-on:click="redirectTo('/community')" class="item"><em class="bgicon"></em>社区</a>
         <a v-on:click="redirectTo('/mine')" class="item"><em class="bgicon"></em>我的</a>
       </div>
     </div>

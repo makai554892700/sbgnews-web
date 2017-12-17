@@ -47,7 +47,7 @@
             var data = {
               'userName': this.loginForm.userName,
               'passWord': this.loginForm.pwd,
-              'deviceType': 0,
+              'deviceType': 3,
               'rember': true
             }
             this.$http.post('/sbgnews/api/user/login', data)

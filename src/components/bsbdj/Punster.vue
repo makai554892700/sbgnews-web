@@ -36,24 +36,18 @@
   </ul>
 </template>
 <script>
+  import {getPunsters} from '../../common/methods'
+
   export default {
     name: 'punster',
-    data () {
+    data: function () {
       return {
         'data': []
       }
     },
     methods: {},
-    created () {
-      this.$http.post('/sbgnews/api/bsbdj/getPunsters', {
-        page: 0,
-        count: 10,
-        needRealText: true
-      }, {emulateJSON: true}).then((data) => {
-        this.data = data.data.data
-      }, (response) => {
-        alert('error=' + response)
-      })
+    created: function () {
+      getPunsters(this, {page: 0, count: 10, needRealText: true})
     }
   }
 </script>
