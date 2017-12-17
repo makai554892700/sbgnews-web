@@ -1,21 +1,51 @@
-export const baseGetNewsPost = (that, url, data) => {
-  that.$http.post(url, data, {emulateJSON: true}).then((data) => {
-    that.data = data.data.data
-  }, (response) => {
-    console.error('error=' + response)
+import http from 'axios'
+
+export const register = (that, data) => {
+  http.post('/sbgnews/api/user/register', data, {emulateJSON: true}).then(res => {
+    if (res.data.code === 0) {
+      console.log('注册ok')
+      login(that, data)
+    } else {
+      alert(res.data.data)
+    }
+  }).catch(err => {
+    alert(err)
   })
 }
-export const baseOperatePost = (that, url, data) => {
-  console.error('url=' + url)
-  console.error('data=' + data)
-  that.$http.post(url, data, {emulateJSON: true}).then((data) => {
-    console.error('success=' + data)
-    console.error('success data.data=' + data.data)
-    console.error('success data.data.code=' + data.data.code)
-    console.error('success data.data.msg=' + data.data.msg)
-    console.error('success data.data.data=' + data.data.data)
-  }, (response) => {
-    console.error('error=' + response)
+export const login = (that, data) => {
+  http.post('/sbgnews/api/user/login', data, {emulateJSON: true}).then(res => {
+    if (res.data.code === 0) {
+      sessionStorage.setItem('userName', res.data.data.userName)
+      that.$router.push({name: '/mine', params: {username: res.data.data.userName}})
+      console.log('登陆ok')
+    } else {
+      alert(res.data.data)
+    }
+  }).catch(err => {
+    alert(err)
+  })
+}
+export const baseGetNewsPost = (that, url, data) => {
+  http.post(url, data, {emulateJSON: true}).then(res => {
+    if (res.data && res.data.code === 0) {
+      that.data = res.data.data
+      console.log('请求ok')
+    } else {
+      alert(res.data.data)
+    }
+  }).catch(err => {
+    alert(err)
+  })
+}
+export const baseOperatePost = (url, data) => {
+  http.post(url, data, {emulateJSON: true}).then(res => {
+    if (res.data.code === 0) {
+      console.log('请求ok')
+    } else {
+      alert(res.data.data)
+    }
+  }).catch(err => {
+    alert(err)
   })
 }
 export const getJocks = (that, data) => {
@@ -33,15 +63,15 @@ export const getVideos = (that, data) => {
 export const getVoices = (that, data) => {
   baseGetNewsPost(that, '/sbgnews/api/bsbdj/getVoices', data)
 }
-export const Love = (that, data) => {
-  baseOperatePost(that, '/sbgnews/api/operate/love', data)
+export const love = (data) => {
+  baseOperatePost('/sbgnews/api/operate/love', data)
 }
-export const Hate = (that, data) => {
-  baseOperatePost(that, '/sbgnews/api/operate/hate', data)
+export const hate = (data) => {
+  baseOperatePost('/sbgnews/api/operate/hate', data)
 }
-export const Share = (that, data) => {
-  baseOperatePost(that, '/sbgnews/api/operate/share', data)
+export const share = (data) => {
+  baseOperatePost('/sbgnews/api/operate/share', data)
 }
-export const Comment = (that, data) => {
-  baseOperatePost(that, '/sbgnews/api/operate/comment', data)
+export const comment = (data) => {
+  baseOperatePost('/sbgnews/api/operate/comment', data)
 }
