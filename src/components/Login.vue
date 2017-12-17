@@ -22,7 +22,7 @@
 <script>
   export default {
     name: 'login',
-    data () {
+    data: function () {
       return {
         loginForm: {
           userName: '',
@@ -41,19 +41,19 @@
       }
     },
     methods: {
-      submitForm (formName) {
+      submitForm: function (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             var data = {
-              'usr': this.loginForm.userName,
-              'pwd': this.loginForm.pwd
+              'userName': this.loginForm.userName,
+              'passWord': this.loginForm.pwd,
+              'deviceType': 0,
+              'rember': true
             }
-            this.$http.get('/sbgnews/api/user/login', data)
+            this.$http.post('/sbgnews/api/user/login', data)
               .then(res => {
                 if (res.data.code === 0) {
-                  sessionStorage.setItem('accessToken', res.data.data.accessToken)
                   sessionStorage.setItem('userName', res.data.data.userName)
-                  sessionStorage.setItem('uid', res.data.data.id)
                   console.log(res.data.data.userName)
                   this.$router.push({name: '/mine', params: {username: res.data.data.userName}})
                   console.log('登陆ok')

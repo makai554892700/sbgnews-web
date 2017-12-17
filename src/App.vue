@@ -1,68 +1,130 @@
-<template>
+<template class="bodyptb">
   <div id="app">
-    <router-view/>
-    <div id="menu" class="menu">
-      <div id="one" class="subMenu text-center">
-        <img src="/static/img/comment.png" data-imgname="my"/>
-        <div class="menu_name">精华</div>
+    <div class="top-menu">
+      <div class="g-wrap cfix">
+        <a v-on:click="redirectTo('/joke')" class="item hover">笑话</a>
+        <a v-on:click="redirectTo('/punster')" class="item">段子</a>
+        <a v-on:click="redirectTo('/voice')" class="item">声音</a>
+        <a v-on:click="redirectTo('/photo')" class="item">图片</a>
+        <a v-on:click="redirectTo('/video')" class="item">视频</a>
       </div>
-      <div id="two" class="subMenu text-center">
-        <img src="/static/img/new_post.png" data-imgname="QQ"/>
-        <div class="menu_name">新帖</div>
+    </div>
+    <router-view id="router-view"/>
+    <div class="footer">
+      <div class="g-wrap cfix">
+        <a v-on:click="redirectTo('/')" class="item hover"><em class="bgicon"></em>精华</a>
+        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em>新帖</a>
+        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em></a>
+        <a v-on:click="redirectTo('/')" class="item"><em class="bgicon"></em>社区</a>
+        <a v-on:click="redirectTo('/mine')" class="item"><em class="bgicon"></em>我的</a>
       </div>
-      <div id="three" class="subMenu text-center">
-        <img src="/static/img/comment.png" data-imgname="my"/>
-      </div>
-      <div id="fore" class="subMenu text-center">
-        <img src="/static/img/community.png" data-imgname="my"/>
-        <div class="menu_name">社区</div>
-      </div>
-      <a href="/mine.html" id="five" class="subMenu text-center">
-        <img src="/static/img/mine.png" data-imgname="my"/>
-        <div class="menu_name">我的</div>
-      </a>
     </div>
   </div>
 </template>
 <script>
   export default {
     name: 'app',
-    position: 'fixed'
+    position: 'fixed',
+    methods: {
+      redirectTo: function (url) {
+        this.$router.push({name: url})
+      }
+    }
   }
 </script>
 
 <style>
-  .menu {
-    display: block;
+  /*footer*/
+  .top-menu {
+    width: 100%;
     position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 70px;
-    color: #474747;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    background-color: #fff;
+    left: 0;
+    top: 0;
+    height: 0.6rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    z-index: 3;
   }
 
-  .menu_name {
-    height: 30px;
-    width: 100%;
-    line-height: 30px;
+  .top-menu .g-wrap {
+    padding: 0.1rem 0 0;
   }
 
-  .subMenu {
+  .top-menu .item {
     width: 20%;
     float: left;
-    cursor: pointer;
+    text-align: center;
   }
 
-  img {
-    vertical-align: middle;
-    border: 0;
+  .footer {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 1rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    z-index: 3;
   }
 
-  .text-center {
-    text-align: center
+  .footer .g-wrap {
+    padding: 0.1rem 0 0;
   }
 
+  .footer .item {
+    width: 20%;
+    float: left;
+    text-align: center;
+  }
+
+  .footer .item .bgicon {
+    display: block;
+    width: 0.6rem;
+    height: 0.5rem;;
+    margin: 0 auto 0.03rem;
+  }
+
+  .footer .item:nth-child(1) .bgicon {
+    background-image: url(/static/img/home.png)
+  }
+
+  .footer .item:nth-child(2) .bgicon {
+    background-image: url(/static/img/new_post.png)
+  }
+
+  .footer .item:nth-child(3) .bgicon {
+    background-image: url(/static/img/new_news.png)
+  }
+
+  .footer .item:nth-child(4) .bgicon {
+    background-image: url(/static/img/community.png)
+  }
+
+  .footer .item:nth-child(5) .bgicon {
+    background-image: url(/static/img/mine.png)
+  }
+
+  .footer .item.hover {
+    color: #f4702d;
+  }
+
+  .footer .item.hover:nth-child(1) .bgicon {
+    background-image: url(/static/img/home.png)
+  }
+
+  .footer .item.hover:nth-child(2) .bgicon {
+    background-image: url(/static/img/new_post.png)
+  }
+
+  .footer .item.hover:nth-child(3) .bgicon {
+    background-image: url(/static/img/new_news.png)
+  }
+
+  .footer .item.hover:nth-child(4) .bgicon {
+    background-image: url(/static/img/community.png)
+  }
+
+  .footer .item.hover:nth-child(5) .bgicon {
+    background-image: url(/static/img/mine.png)
+  }
 </style>
