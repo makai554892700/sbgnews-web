@@ -12,8 +12,26 @@
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <meta name="format-detection" content="telephone=no, email=no"/>
-  <link rel="stylesheet" href="/static/css/base.css">
-  <script src="/static/js/font.js"></script>
+  <script type="text/javascript">
+    (function () {
+      document.addEventListener('DOMContentLoaded', function () {
+        var htmlsize = function () {
+          var html = document.documentElement
+          var windowWidth = html.clientWidth
+          if (windowWidth <= 750) {
+            html.style.fontSize = windowWidth / 7.5 + 'px'
+            // 等价于html.style.fontSize = windowWidth / 750 * 100 + 'px';
+          } else {
+            html.style.fontSize = 100 + 'px'
+          }
+        }
+        htmlsize()
+        window.onresize = function () {
+          htmlsize()
+        }
+      }, false)
+    })()
+  </script>
 </head>
 <body class="bodyptb">
 <div id="index"></div>

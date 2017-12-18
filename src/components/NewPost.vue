@@ -1,5 +1,5 @@
 <template>
-  <div>精华</div>
+  <div>新帖</div>
 </template>
 <script>
 

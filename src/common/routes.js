@@ -1,3 +1,5 @@
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Joke from '../components/Joke.vue'
 import Photo from '../components/bsbdj/Photo.vue'
 import Punster from '../components/bsbdj/Punster.vue'
@@ -9,7 +11,9 @@ import New from '../components/New.vue'
 import Community from '../components/Community.vue'
 import Mine from '../components/Mine.vue'
 
-export default {
+Vue.use(VueRouter)
+
+export default new VueRouter({
   routes: [
     {name: '/', path: '/', redirect: '/joke'},
     {name: '/login', path: '/login', component: Login},
@@ -23,4 +27,4 @@ export default {
     {name: '/voice', path: '/voice', component: Voice},
     {name: '/video', path: '/video', component: Video}
   ]
-}
+})

@@ -7,24 +7,27 @@
         <a v-on:click="redirectTo('/new_post')" class="item"><em class="bgicon"></em>新帖</a>
         <a v-on:click="redirectTo('/new')" class="item"><em class="bgicon"></em></a>
         <a v-on:click="redirectTo('/community')" class="item"><em class="bgicon"></em>社区</a>
-        <a v-on:click="redirectTo('/mine')" class="item"><em class="bgicon"></em>我的</a>
+        <a v-on:click="redirectTo('/mine',true)" class="item"><em class="bgicon"></em>我的</a>
       </div>
     </div>
   </div>
 </template>
 <script>
+  import {jumpTo} from './common/methods'
+
   export default {
     name: 'app',
     position: 'fixed',
     methods: {
-      redirectTo: function (url) {
-        this.$router.push({name: url})
+      redirectTo: function (url, needAuth = false) {
+        jumpTo(url, needAuth)
       }
     }
   }
 </script>
 
 <style>
+  @import './assets/css/base.css';
   /*footer*/
   .footer {
     width: 100%;
@@ -55,23 +58,23 @@
   }
 
   .footer .item:nth-child(1) .bgicon {
-    background-image: url(/static/img/home.png)
+    background-image: url(./assets/img/home.png)
   }
 
   .footer .item:nth-child(2) .bgicon {
-    background-image: url(/static/img/new_post.png)
+    background-image: url(./assets/img/new_post.png)
   }
 
   .footer .item:nth-child(3) .bgicon {
-    background-image: url(/static/img/new_news.png)
+    background-image: url(./assets/img/new_news.png)
   }
 
   .footer .item:nth-child(4) .bgicon {
-    background-image: url(/static/img/community.png)
+    background-image: url(./assets/img/community.png)
   }
 
   .footer .item:nth-child(5) .bgicon {
-    background-image: url(/static/img/mine.png)
+    background-image: url(./assets/img/mine.png)
   }
 
   .footer .item.hover {
@@ -79,23 +82,23 @@
   }
 
   .footer .item.hover:nth-child(1) .bgicon {
-    background-image: url(/static/img/home.png)
+    background-image: url(./assets/img/home.png)
   }
 
   .footer .item.hover:nth-child(2) .bgicon {
-    background-image: url(/static/img/new_post.png)
+    background-image: url(./assets/img/new_post.png)
   }
 
   .footer .item.hover:nth-child(3) .bgicon {
-    background-image: url(/static/img/new_news.png)
+    background-image: url(./assets/img/new_news.png)
   }
 
   .footer .item.hover:nth-child(4) .bgicon {
-    background-image: url(/static/img/community.png)
+    background-image: url(./assets/img/community.png)
   }
 
   .footer .item.hover:nth-child(5) .bgicon {
-    background-image: url(/static/img/mine.png)
+    background-image: url(./assets/img/mine.png)
   }
 
   #router-view {

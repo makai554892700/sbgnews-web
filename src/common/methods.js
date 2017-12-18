@@ -1,4 +1,14 @@
 import http from 'axios'
+import router from './routes'
+
+export const jumpTo = (url, needAuth = false) => {
+  console.log('url=' + url + ';needAuth=' + needAuth + ';userName=' + sessionStorage.getItem('userName'))
+  if (needAuth && !sessionStorage.getItem('userName')) {
+    router.push({name: '/login'})
+  } else {
+    router.push({name: url})
+  }
+}
 
 export const register = (that, data) => {
   http.post('/sbgnews/api/user/register', data, {emulateJSON: true}).then(res => {
