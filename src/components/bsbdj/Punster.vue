@@ -4,7 +4,7 @@
     <ul class="punster-table">
       <li v-for="item in data">
         <UserHead :item="item"></UserHead>
-        <div class="content">{{item.text}}</div>
+        <h1 class="bsbdj-content">{{item.text}}</h1>
         <Operate :item="item"></Operate>
       </li>
     </ul>
@@ -38,10 +38,5 @@
 <style scoped>
   .punster-table {
     list-style: none;
-  }
-
-  .content {
-    margin: 10px 10px 10px 10px;
-    font-size: 14px;
   }
 </style>

@@ -4,7 +4,7 @@
     <ul class="video-table">
       <li v-for="item in data">
         <UserHead :item="item"></UserHead>
-        <div class="content">{{item.text}}</div>
+        <h1 class="bsbdj-content">{{item.text}}</h1>
         <video :src="item.videoUri" controls="controls" class="bsbdj-video">
           您的浏览器不支持 video 标签。
         </video>
@@ -47,10 +47,5 @@
   .bsbdj-video {
     padding: 0 1rem 0 1rem;
     width: 100%;
-  }
-
-  .content {
-    margin: 10px 10px 10px 10px;
-    font-size: 14px;
   }
 </style>

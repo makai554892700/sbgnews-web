@@ -4,7 +4,7 @@
     <ul class="voice-table">
       <li v-for="item in data">
         <UserHead :item="item"></UserHead>
-        <div class="content">{{item.text}}</div>
+        <h1 class="bsbdj-content">{{item.text}}</h1>
         <div>
           <img class="voice-img" :src="item.cdnImg"/>
           <audio :src="item.voiceuri" controls="controls" class="mp3">
@@ -45,11 +45,6 @@
 
   .voice-table {
     list-style: none;
-  }
-
-  .content {
-    margin: 10px 10px 10px 10px;
-    font-size: 14px;
   }
 
   .mp3 {

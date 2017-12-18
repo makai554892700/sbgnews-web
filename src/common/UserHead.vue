@@ -1,42 +1,53 @@
 <template>
-  <div>
-    <img :src="item.userDesc.imgUrl" class="head">
-    <div class="name">
-      <p class="color-3123DF">
-        {{item.userDesc.nickName}}
-        <br>
-        <small class="color-868780">{{item.newsDesc.createTime}}</small>
-      </p>
-    </div>
+  <div v-on:click="goTo(item.userDesc.pageHome)">
+    <img :src="item.userDesc.imgUrl" class="head-img">
+    <h1 class="nick-name">{{item.userDesc.nickName}}</h1>
+    <h2 class="create-date">{{item.newsDesc.createTime}}</h2>
   </div>
 </template>
 
 <script>
   export default {
     props: ['item'],
-    name: 'user-head'
+    name: 'user-head',
+    methods: {
+      goTo: function (url) {
+        if (url == null) {
+          alert('usrl is null.')
+        } else {
+          window.location.href = url
+        }
+      }
+    }
   }
 </script>
 
 <style scoped>
 
-  .head {
-    width: 50px;
-    margin: 10px;
+  .head-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     position: absolute;
+    float: left;
   }
 
-  .name {
-    margin-left: 90px;
-    padding-top: 10px;
-    height: 60px;
+  .nick-name {
+    width: 100%;
+    height: 1rem;
+    margin: 0.25rem 0.25rem 0.75rem 2rem;
+    padding: 0 0 0 0;
+    position: relative;
+    float: left;
+    font-size: 15px;
   }
 
-  .color-868780 {
-    color: #868780;
-  }
-
-  .color-3123DF {
-    color: #3123DF;
+  .create-date {
+    width: 100%;
+    height: 0.75rem;
+    margin: 0.75rem 0.25rem 0.5rem 2rem;
+    position: absolute;
+    float: left;
+    font-size: 12px;
   }
 </style>

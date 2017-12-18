@@ -1,10 +1,10 @@
 <template>
   <div>
     <NewsHead></NewsHead>
-    <ul class="photo-table">
+    <ul>
       <li v-for="item in data">
         <UserHead :item="item"></UserHead>
-        <div class="content">{{item.text}}</div>
+        <h1 class="bsbdj-content">{{item.text}}</h1>
         <img class="photo-img" :src="item.cdnImg"/>
         <Operate :item="item"></Operate>
       </li>
@@ -37,16 +37,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-  .photo-table {
-    list-style: none;
-  }
-
-  .content {
-    margin: 10px 10px 10px 10px;
-    font-size: 14px;
-  }
-
   .photo-img {
     width: 100%;
     padding: 0 1rem 0 1rem;

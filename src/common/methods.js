@@ -1,11 +1,27 @@
 import http from 'axios'
 import router from './routes'
 
-export const jumpTo = (url, needAuth = false) => {
-  console.log('url=' + url + ';needAuth=' + needAuth + ';userName=' + sessionStorage.getItem('userName'))
-  if (needAuth && !sessionStorage.getItem('userName')) {
-    router.push({name: '/login'})
+export const saveUser = (userName) => {
+  sessionStorage.setItem('userName', userName)
+}
+
+export const getUser = () => {
+  return sessionStorage.getItem('userName')
+}
+
+export const isLogin = (needReirect) => {
+  if (!getUser()) {
+    if (needReirect) {
+      router.push({name: '/login'})
+    }
+    return false
   } else {
+    return true
+  }
+}
+
+export const jumpTo = (url, needAuth = false) => {
+  if (!needAuth || isLogin(true)) {
     router.push({name: url})
   }
 }
@@ -25,7 +41,7 @@ export const register = (that, data) => {
 export const login = (that, data) => {
   http.post('/sbgnews/api/user/login', data, {emulateJSON: true}).then(res => {
     if (res.data.code === 0) {
-      sessionStorage.setItem('userName', res.data.data.userName)
+      saveUser(res.data.data.userName)
       that.$router.push({name: '/mine', params: {username: res.data.data.userName}})
       console.log('登陆ok')
     } else {
@@ -48,15 +64,17 @@ export const baseGetNewsPost = (that, url, data) => {
   })
 }
 export const baseOperatePost = (url, data) => {
-  http.post(url, data, {emulateJSON: true}).then(res => {
-    if (res.data.code === 0) {
-      console.log('请求ok')
-    } else {
-      alert(res.data.data)
-    }
-  }).catch(err => {
-    alert(err)
-  })
+  if (isLogin(true)) {
+    http.post(url, data, {emulateJSON: true}).then(res => {
+      if (res.data.code === 0) {
+        console.log('请求ok')
+      } else {
+        alert(res.data.data)
+      }
+    }).catch(err => {
+      alert(err)
+    })
+  }
 }
 export const getJocks = (that, data) => {
   baseGetNewsPost(that, '/sbgnews/api/jokes/getJokes', data)
