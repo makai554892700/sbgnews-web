@@ -5,9 +5,9 @@
       <li v-for="item in data">
         <UserHead :item="item"></UserHead>
         <h1 class="bsbdj-content">{{item.text}}</h1>
-        <div>
-          <img class="voice-img" :src="item.cdnImg"/>
-          <audio :src="item.voiceuri" controls="controls" class="mp3">
+        <div class="rule-max">
+          <img class="item-img" :src="item.cdnImg"/>
+          <audio :src="item.voiceuri" controls="controls" class="item-mp3">
             您的浏览器不支持 audio 标签。
           </audio>
         </div>
@@ -47,12 +47,11 @@
     list-style: none;
   }
 
-  .mp3 {
+  .voice-table .item-mp3 {
     width: 100%;
   }
 
-  .voice-img {
+  .voice-table .item-img {
     width: 100%;
-    padding: 0 1rem 0 1rem;
   }
 </style>

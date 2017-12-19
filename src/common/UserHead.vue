@@ -25,8 +25,8 @@
 <style scoped>
 
   .head-img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
     padding: 0.25rem 0.25rem 0.25rem 0.25rem;
     position: absolute;
     float: left;
@@ -35,7 +35,7 @@
   .nick-name {
     width: 100%;
     height: 1rem;
-    margin: 0.25rem 0.25rem 0.75rem 2rem;
+    margin: 0.35rem 0.25rem 0.25rem 1.75rem;
     padding: 0 0 0 0;
     position: relative;
     float: left;
@@ -45,7 +45,7 @@
   .create-date {
     width: 100%;
     height: 0.75rem;
-    margin: 0.75rem 0.25rem 0.5rem 2rem;
+    margin: 0.85rem 0.25rem 0 1.75rem;
     position: absolute;
     float: left;
     font-size: 12px;
