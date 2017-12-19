@@ -1,5 +1,5 @@
 <template>
-  <div v-on:click="goTo(item.userDesc.pageHome)">
+  <div v-on:click="goTo(item.userDesc.pageHome)" class="bsbdj-head">
     <img :src="item.userDesc.imgUrl" class="head-img">
     <h1 class="nick-name">{{item.userDesc.nickName}}</h1>
     <h2 class="create-date">{{item.newsDesc.createTime}}</h2>
@@ -9,7 +9,7 @@
 <script>
   export default {
     props: ['item'],
-    name: 'user-head',
+    name: 'UserHead',
     methods: {
       goTo: function (url) {
         if (url == null) {
@@ -23,31 +23,28 @@
 </script>
 
 <style scoped>
-
-  .head-img {
+  .bsbdj-head .head-img {
     width: 1rem;
     height: 1rem;
-    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    margin: 0.25rem 0.25rem 0.25rem 0.25rem;
     position: absolute;
-    float: left;
+    box-sizing: border-box;
   }
 
-  .nick-name {
-    width: 100%;
+  .bsbdj-head .nick-name {
     height: 1rem;
-    margin: 0.35rem 0.25rem 0.25rem 1.75rem;
-    padding: 0 0 0 0;
-    position: relative;
-    float: left;
+    margin: 0.35rem 0 0.25rem 1.75rem;
     font-size: 15px;
+    position: absolute;
+    box-sizing: border-box;
+    float: left;
   }
 
-  .create-date {
-    width: 100%;
+  .bsbdj-head .create-date {
     height: 0.75rem;
-    margin: 0.85rem 0.25rem 0 1.75rem;
+    margin: 0.85rem 0 0 1.75rem;
+    box-sizing: border-box;
     position: absolute;
-    float: left;
     font-size: 12px;
   }
 </style>

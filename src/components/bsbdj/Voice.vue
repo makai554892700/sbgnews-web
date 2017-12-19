@@ -43,15 +43,13 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .voice-table {
-    list-style: none;
-  }
-
   .voice-table .item-mp3 {
     width: 100%;
+    display: block;
   }
 
   .voice-table .item-img {
     width: 100%;
+    display: block;
   }
 </style>

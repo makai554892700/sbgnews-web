@@ -40,12 +40,10 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .video-table {
-    list-style: none;
-  }
-
   .bsbdj-video {
-    padding: 0 1rem 0 1rem;
     width: 100%;
+    display: block;
+    padding: 0 0.5rem 0 0.5rem;
+    box-sizing: border-box;
   }
 </style>

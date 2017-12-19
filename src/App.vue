@@ -1,4 +1,4 @@
-<template class="bodyptb">
+<template>
   <div id="app" class="rule-max">
     <router-view class="news-body"/>
     <HomeFooter/>
@@ -44,7 +44,7 @@
   }
 
   .bsbdj-content {
-    padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+    padding: 1.5rem 0.5rem 0.25rem 0.5rem;
     font-size: 14px;
   }
 </style>

@@ -39,6 +39,7 @@
 <style scoped>
   .photo-img {
     width: 100%;
-    padding: 0 1rem 0 1rem;
+    display: block;
+    box-sizing: border-box;
   }
 </style>
